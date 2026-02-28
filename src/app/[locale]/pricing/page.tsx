@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations, useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Section } from "@/components/section";
 import { CtaBlock } from "@/components/cta-block";
-import { Check, X, Minus } from "lucide-react";
+import { Check, Sparkles } from "lucide-react";
 
 function RoiCalculator() {
   const t = useTranslations("pricing");
@@ -18,7 +18,7 @@ function RoiCalculator() {
   const timeSaved = Math.round(hours * 4.33 * 0.75);
   const copySaved = 4000;
   const campanaCost =
-    accounts <= 3 ? 299 : accounts <= 10 ? 699 : accounts <= 30 ? 1499 : 2999;
+    accounts <= 3 ? 150 : accounts <= 10 ? 350 : accounts <= 30 ? 750 : 1499;
   const netRoi = Math.round(cpaSavings + copySaved - campanaCost);
 
   return (
@@ -32,7 +32,7 @@ function RoiCalculator() {
             </label>
             <input
               type="range"
-              min="5"
+              min="1"
               max="100"
               value={accounts}
               onChange={(e) => setAccounts(Number(e.target.value))}
@@ -72,7 +72,7 @@ function RoiCalculator() {
             </label>
             <input
               type="range"
-              min="5"
+              min="1"
               max="40"
               value={hours}
               onChange={(e) => setHours(Number(e.target.value))}
@@ -108,7 +108,8 @@ function RoiCalculator() {
           <div className="bg-brand/10 border border-brand/20 rounded-lg p-4">
             <p className="text-brand text-sm">{t("roiNet")}</p>
             <p className="text-3xl font-bold text-white">
-              +{netRoi.toLocaleString()} PLN/mo
+              {netRoi >= 0 ? "+" : ""}
+              {netRoi.toLocaleString()} PLN/mo
             </p>
           </div>
         </div>
@@ -119,26 +120,18 @@ function RoiCalculator() {
 
 export default function PricingPage() {
   const t = useTranslations("pricing");
+  const features = t.raw("featuresList") as string[];
 
   const tiers = [
     {
       name: t("solo"),
       price: t("soloPrice"),
+      foundingPrice: t("soloFoundingPrice"),
       unit: t("priceUnit"),
       usd: t("soloUsd"),
       best: t("soloBest"),
-      features: [
-        t("soloAccounts"),
-        t("platforms"),
-        t("dashboard"),
-        t("soloOptim"),
-        t("soloCopy"),
-        t("soloInsights"),
-        t("soloSeats"),
-        t("allLevels"),
-        t("aiReasoning"),
-      ],
-      missing: [t("crossClient"), t("apiAccess")],
+      accounts: t("soloAccounts"),
+      seats: t("soloSeats"),
       support: t("soloSupport"),
       popular: false,
       isContact: false,
@@ -146,21 +139,12 @@ export default function PricingPage() {
     {
       name: t("starter"),
       price: t("starterPrice"),
+      foundingPrice: t("starterFoundingPrice"),
       unit: t("priceUnit"),
       usd: t("starterUsd"),
       best: t("starterBest"),
-      features: [
-        t("starterAccounts"),
-        t("platforms"),
-        t("dashboard"),
-        t("starterOptim"),
-        t("starterCopy"),
-        t("starterInsights"),
-        t("starterSeats"),
-        t("allLevels"),
-        t("aiReasoning"),
-      ],
-      missing: [t("crossClient"), t("apiAccess")],
+      accounts: t("starterAccounts"),
+      seats: t("starterSeats"),
       support: t("starterSupport"),
       popular: true,
       isContact: false,
@@ -168,22 +152,12 @@ export default function PricingPage() {
     {
       name: t("growth"),
       price: t("growthPrice"),
+      foundingPrice: t("growthFoundingPrice"),
       unit: t("priceUnit"),
       usd: t("growthUsd"),
       best: t("growthBest"),
-      features: [
-        t("growthAccounts"),
-        t("platforms"),
-        t("dashboard"),
-        t("growthOptim"),
-        t("growthCopy"),
-        t("growthInsights"),
-        t("growthSeats"),
-        t("allLevels"),
-        t("aiReasoning"),
-        t("crossClient"),
-      ],
-      missing: [t("apiAccess")],
+      accounts: t("growthAccounts"),
+      seats: t("growthSeats"),
       support: t("growthSupport"),
       popular: false,
       isContact: false,
@@ -191,23 +165,12 @@ export default function PricingPage() {
     {
       name: t("scale"),
       price: t("scalePrice"),
+      foundingPrice: null,
       unit: t("priceUnit"),
       usd: t("scaleUsd"),
       best: t("scaleBest"),
-      features: [
-        t("scaleAccounts"),
-        t("platforms"),
-        t("dashboard"),
-        t("scaleOptim"),
-        t("scaleCopy"),
-        t("scaleInsights"),
-        t("scaleSeats"),
-        t("allLevels"),
-        t("aiReasoning"),
-        t("crossClient"),
-        `${t("apiAccess")} (${t("apiNote")})`,
-      ],
-      missing: [],
+      accounts: t("scaleAccounts"),
+      seats: t("scaleSeats"),
       support: t("scaleSupport"),
       popular: false,
       isContact: true,
@@ -229,6 +192,22 @@ export default function PricingPage() {
         </p>
       </Section>
 
+      {/* Founding User Banner */}
+      <Section>
+        <div className="bg-linear-to-r from-brand/20 to-accent/20 border border-brand/30 rounded-2xl p-8 text-center">
+          <div className="flex items-center justify-center gap-2 mb-3">
+            <Sparkles className="w-5 h-5 text-accent" />
+            <span className="text-accent font-bold text-sm uppercase tracking-wider">
+              {t("foundingBadge")}
+            </span>
+            <Sparkles className="w-5 h-5 text-accent" />
+          </div>
+          <p className="text-gray-200 text-lg max-w-xl mx-auto">
+            {t("foundingDesc")}
+          </p>
+        </div>
+      </Section>
+
       {/* Pricing Cards */}
       <Section>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -248,35 +227,65 @@ export default function PricingPage() {
               )}
               <h3 className="text-h3 text-white mb-2">{tier.name}</h3>
               <p className="text-gray-400 text-sm mb-4">{tier.best}</p>
+
+              {/* Pricing with founding discount */}
               <div className="mb-6">
-                <span className="text-3xl font-bold text-white">
-                  {tier.price}
-                </span>
-                {!tier.isContact && (
-                  <span className="text-gray-400 text-sm"> {tier.unit}</span>
+                {tier.foundingPrice ? (
+                  <>
+                    <span className="text-gray-500 line-through text-lg">
+                      {tier.price}
+                    </span>
+                    <div>
+                      <span className="text-3xl font-bold text-accent">
+                        {tier.foundingPrice}
+                      </span>
+                      <span className="text-gray-400 text-sm">
+                        {" "}
+                        {tier.unit}
+                      </span>
+                    </div>
+                    <p className="text-accent text-xs mt-1">
+                      {t("foundingLabel")}
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <span className="text-3xl font-bold text-white">
+                      {tier.price}
+                    </span>
+                    <p className="text-gray-500 text-xs mt-1">{tier.usd}</p>
+                  </>
                 )}
-                <p className="text-gray-500 text-xs mt-1">{tier.usd}</p>
               </div>
-              <ul className="space-y-3 mb-8">
-                {tier.features.map((f, i) => (
+
+              {/* What differs: accounts + seats */}
+              <div className="space-y-3 mb-6">
+                <div className="flex items-start gap-2 text-white text-sm font-medium">
+                  <Check className="w-5 h-5 text-accent shrink-0 mt-0.5" />
+                  <span>{tier.accounts}</span>
+                </div>
+                <div className="flex items-start gap-2 text-white text-sm font-medium">
+                  <Check className="w-5 h-5 text-accent shrink-0 mt-0.5" />
+                  <span>{tier.seats}</span>
+                </div>
+              </div>
+
+              {/* All features included */}
+              <p className="text-gray-500 text-xs uppercase tracking-wider mb-3">
+                {t("allFeatures")}
+              </p>
+              <ul className="space-y-2 mb-6">
+                {features.map((f, i) => (
                   <li
                     key={i}
-                    className="flex items-start gap-2 text-gray-300 text-sm"
+                    className="flex items-start gap-2 text-gray-400 text-xs"
                   >
-                    <Check className="w-5 h-5 text-accent shrink-0 mt-0.5" />
-                    <span>{f}</span>
-                  </li>
-                ))}
-                {tier.missing.map((f, i) => (
-                  <li
-                    key={`m-${i}`}
-                    className="flex items-start gap-2 text-gray-600 text-sm"
-                  >
-                    <Minus className="w-5 h-5 shrink-0 mt-0.5" />
+                    <Check className="w-4 h-4 text-gray-600 shrink-0 mt-0.5" />
                     <span>{f}</span>
                   </li>
                 ))}
               </ul>
+
               <p className="text-gray-500 text-xs mb-4">
                 {t("prioritySupport")}: {tier.support}
               </p>
@@ -299,7 +308,7 @@ export default function PricingPage() {
       <Section className="bg-gray-900/50">
         <div className="text-center">
           <h2 className="text-h2 text-white mb-6">{t("trialH2")}</h2>
-          <ul className="space-y-3 max-w-md mx-auto mb-8">
+          <ul className="space-y-3 max-w-md mx-auto mb-6">
             {(t.raw("trialItems") as string[]).map((item, i) => (
               <li
                 key={i}
@@ -310,6 +319,12 @@ export default function PricingPage() {
               </li>
             ))}
           </ul>
+          <div className="space-y-2 mb-8">
+            <p className="text-gray-300 text-sm">{t("trialSolo")}</p>
+            <p className="text-accent text-sm font-medium">
+              {t("trialAgency")}
+            </p>
+          </div>
           <Link
             href="/contact"
             className="bg-brand hover:bg-brand-hover text-white px-8 py-4 rounded-lg font-semibold transition-all inline-block"
