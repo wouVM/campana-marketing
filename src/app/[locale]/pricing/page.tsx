@@ -14,10 +14,11 @@ function RoiCalculator() {
   const [cpa, setCpa] = useState(50);
   const [hours, setHours] = useState(15);
 
-  const cpaSavings = accounts * spend * 0.22 * 0.01;
+  const cpaSavings = accounts * spend * 0.15 * 0.01;
   const timeSaved = Math.round(hours * 4.33 * 0.75);
   const copySaved = 4000;
-  const campanaCost = accounts <= 10 ? 849 : accounts <= 30 ? 1699 : 3399;
+  const campanaCost =
+    accounts <= 3 ? 299 : accounts <= 10 ? 699 : accounts <= 30 ? 1499 : 2999;
   const netRoi = Math.round(cpaSavings + copySaved - campanaCost);
 
   return (
@@ -121,6 +122,28 @@ export default function PricingPage() {
 
   const tiers = [
     {
+      name: t("solo"),
+      price: t("soloPrice"),
+      unit: t("priceUnit"),
+      usd: t("soloUsd"),
+      best: t("soloBest"),
+      features: [
+        t("soloAccounts"),
+        t("platforms"),
+        t("dashboard"),
+        t("soloOptim"),
+        t("soloCopy"),
+        t("soloInsights"),
+        t("soloSeats"),
+        t("allLevels"),
+        t("aiReasoning"),
+      ],
+      missing: [t("crossClient"), t("apiAccess")],
+      support: t("soloSupport"),
+      popular: false,
+      isContact: false,
+    },
+    {
       name: t("starter"),
       price: t("starterPrice"),
       unit: t("priceUnit"),
@@ -139,7 +162,8 @@ export default function PricingPage() {
       ],
       missing: [t("crossClient"), t("apiAccess")],
       support: t("starterSupport"),
-      popular: false,
+      popular: true,
+      isContact: false,
     },
     {
       name: t("growth"),
@@ -161,7 +185,8 @@ export default function PricingPage() {
       ],
       missing: [t("apiAccess")],
       support: t("growthSupport"),
-      popular: true,
+      popular: false,
+      isContact: false,
     },
     {
       name: t("scale"),
@@ -185,6 +210,7 @@ export default function PricingPage() {
       missing: [],
       support: t("scaleSupport"),
       popular: false,
+      isContact: true,
     },
   ];
 
@@ -205,7 +231,7 @@ export default function PricingPage() {
 
       {/* Pricing Cards */}
       <Section>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {tiers.map((tier) => (
             <div
               key={tier.name}
@@ -223,10 +249,12 @@ export default function PricingPage() {
               <h3 className="text-h3 text-white mb-2">{tier.name}</h3>
               <p className="text-gray-400 text-sm mb-4">{tier.best}</p>
               <div className="mb-6">
-                <span className="text-4xl font-bold text-white">
+                <span className="text-3xl font-bold text-white">
                   {tier.price}
                 </span>
-                <span className="text-gray-400 text-sm"> {tier.unit}</span>
+                {!tier.isContact && (
+                  <span className="text-gray-400 text-sm"> {tier.unit}</span>
+                )}
                 <p className="text-gray-500 text-xs mt-1">{tier.usd}</p>
               </div>
               <ul className="space-y-3 mb-8">
@@ -260,7 +288,7 @@ export default function PricingPage() {
                     : "bg-gray-800 hover:bg-gray-700 text-white"
                 }`}
               >
-                {t("trialCta")}
+                {tier.isContact ? t("contactSales") : t("trialCta")}
               </Link>
             </div>
           ))}
@@ -311,22 +339,22 @@ export default function PricingPage() {
             offers: [
               {
                 "@type": "Offer",
+                name: "Solo",
+                price: "299",
+                priceCurrency: "PLN",
+                availability: "https://schema.org/InStock",
+              },
+              {
+                "@type": "Offer",
                 name: "Starter",
-                price: "849",
+                price: "699",
                 priceCurrency: "PLN",
                 availability: "https://schema.org/InStock",
               },
               {
                 "@type": "Offer",
                 name: "Growth",
-                price: "1699",
-                priceCurrency: "PLN",
-                availability: "https://schema.org/InStock",
-              },
-              {
-                "@type": "Offer",
-                name: "Scale",
-                price: "3399",
+                price: "1499",
                 priceCurrency: "PLN",
                 availability: "https://schema.org/InStock",
               },

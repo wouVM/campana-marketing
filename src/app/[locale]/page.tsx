@@ -126,37 +126,12 @@ export default function HomePage({
         <h2 className="text-h2 text-white mb-10 text-center">
           {t("proof.h2")}
         </h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10">
-          {(["stat1", "stat2", "stat3", "stat4"] as const).map((key) => (
-            <div key={key} className="text-center">
-              <div className="text-4xl font-bold text-white mb-1">
-                {t(`proof.${key}`)}
-              </div>
-              <div className="text-sm text-gray-400">
-                {t(`proof.${key}Label`)}
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="bg-gray-900 border border-gray-700 rounded-xl p-6 max-w-2xl mx-auto mb-10">
-          <p className="italic text-gray-300 mb-4">
-            &ldquo;{t("proof.testimonial")}&rdquo;
-          </p>
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-brand/20 flex items-center justify-center">
-              <span className="text-brand font-bold text-sm">M</span>
-            </div>
-            <p className="text-gray-400 text-sm">
-              {t("proof.testimonialAuthor")}
-            </p>
-          </div>
-        </div>
-        <div className="flex flex-wrap justify-center gap-3 mb-8">
+        <div className="flex flex-wrap justify-center gap-3 mb-10">
           {(["badge1", "badge2", "badge3", "badge4", "badge5"] as const).map(
             (key) => (
               <div
                 key={key}
-                className="bg-gray-800 border border-gray-700 rounded-lg px-3 py-1.5 text-xs font-medium text-gray-300 flex items-center gap-2"
+                className="bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-sm font-medium text-gray-300 flex items-center gap-2"
               >
                 <Shield className="w-4 h-4 text-accent" />
                 {t(`proof.${key}`)}
@@ -164,6 +139,9 @@ export default function HomePage({
             )
           )}
         </div>
+        <p className="text-gray-300 text-center max-w-2xl mx-auto mb-10">
+          {t("proof.earlyAccess")}
+        </p>
         <div className="flex flex-col sm:flex-row justify-center gap-6">
           <Link
             href="/for-agencies"

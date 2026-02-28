@@ -3,7 +3,7 @@ import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { Section } from "@/components/section";
 import { CtaBlock } from "@/components/cta-block";
-import { Check, Quote, Shield } from "lucide-react";
+import { Check, Shield } from "lucide-react";
 
 export async function generateMetadata({
   params,
@@ -42,17 +42,17 @@ export default function ForBusinessesPage() {
         <h1 className="text-hero text-white mb-6">{t("h1")}</h1>
       </Section>
 
-      {/* Kasia's Story */}
+      {/* Kasia's Scenario */}
       <Section>
         <h2 className="text-h2 text-white mb-8">{t("kasiaH2")}</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="bg-red-950/20 border border-red-900/30 rounded-xl p-8">
-            <Quote className="w-8 h-8 text-red-400 mb-4" />
-            <p className="text-gray-300 italic">{t("kasiaBefore")}</p>
+            <p className="text-xs text-red-400 font-semibold uppercase tracking-wider mb-3">The Problem</p>
+            <p className="text-gray-300">{t("kasiaBefore")}</p>
           </div>
           <div className="bg-green-950/20 border border-green-900/30 rounded-xl p-8">
-            <Quote className="w-8 h-8 text-green-400 mb-4" />
-            <p className="text-gray-300 italic">{t("kasiaAfter")}</p>
+            <p className="text-xs text-green-400 font-semibold uppercase tracking-wider mb-3">With Campana</p>
+            <p className="text-gray-300">{t("kasiaAfter")}</p>
           </div>
         </div>
       </Section>

@@ -3,7 +3,7 @@ import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { Section } from "@/components/section";
 import { CtaBlock } from "@/components/cta-block";
-import { Check, Quote } from "lucide-react";
+import { Check } from "lucide-react";
 
 export async function generateMetadata({
   params,
@@ -41,32 +41,35 @@ export default function ForAgenciesPage() {
         <h1 className="text-hero text-white mb-6">{t("h1")}</h1>
       </Section>
 
-      {/* Magda's Story */}
+      {/* Scenario Label */}
       <Section>
+        <p className="text-accent text-sm font-semibold uppercase tracking-wider mb-6">
+          {t("scenarioLabel")}
+        </p>
         <h2 className="text-h2 text-white mb-8">{t("magdaH2")}</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="bg-red-950/20 border border-red-900/30 rounded-xl p-8">
-            <Quote className="w-8 h-8 text-red-400 mb-4" />
-            <p className="text-gray-300 italic">{t("magdaBefore")}</p>
+            <p className="text-xs text-red-400 font-semibold uppercase tracking-wider mb-3">The Problem</p>
+            <p className="text-gray-300">{t("magdaBefore")}</p>
           </div>
           <div className="bg-green-950/20 border border-green-900/30 rounded-xl p-8">
-            <Quote className="w-8 h-8 text-green-400 mb-4" />
-            <p className="text-gray-300 italic">{t("magdaAfter")}</p>
+            <p className="text-xs text-green-400 font-semibold uppercase tracking-wider mb-3">With Campana</p>
+            <p className="text-gray-300">{t("magdaAfter")}</p>
           </div>
         </div>
       </Section>
 
-      {/* Tomek's Story */}
+      {/* Tomek's Scenario */}
       <Section className="bg-gray-900/50">
         <h2 className="text-h2 text-white mb-8">{t("tomekH2")}</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="bg-red-950/20 border border-red-900/30 rounded-xl p-8">
-            <Quote className="w-8 h-8 text-red-400 mb-4" />
-            <p className="text-gray-300 italic">{t("tomekBefore")}</p>
+            <p className="text-xs text-red-400 font-semibold uppercase tracking-wider mb-3">The Problem</p>
+            <p className="text-gray-300">{t("tomekBefore")}</p>
           </div>
           <div className="bg-green-950/20 border border-green-900/30 rounded-xl p-8">
-            <Quote className="w-8 h-8 text-green-400 mb-4" />
-            <p className="text-gray-300 italic">{t("tomekAfter")}</p>
+            <p className="text-xs text-green-400 font-semibold uppercase tracking-wider mb-3">With Campana</p>
+            <p className="text-gray-300">{t("tomekAfter")}</p>
           </div>
         </div>
       </Section>
