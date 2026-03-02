@@ -29,7 +29,7 @@ export default function TermsPage() {
   return (
     <>
       <Section className="pt-16 md:pt-24">
-        <h1 className="text-hero text-white mb-4">{t("h1")}</h1>
+        <h1 className="text-hero bg-linear-to-br from-white via-gray-100 to-gray-300 bg-clip-text text-transparent mb-6">{t("h1")}</h1>
         <p className="text-gray-400 text-sm">{t("lastUpdated")}</p>
       </Section>
 

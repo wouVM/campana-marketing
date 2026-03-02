@@ -82,12 +82,12 @@ export default function BlogPage() {
   return (
     <>
       <Section className="pt-16 md:pt-24">
-        <h1 className="text-hero text-white mb-10">{t("h1")}</h1>
+        <h1 className="text-hero bg-linear-to-br from-white via-gray-100 to-gray-300 bg-clip-text text-transparent mb-10">{t("h1")}</h1>
         <div className="flex flex-wrap gap-3 mb-10">
           {(t.raw("categories") as string[]).map((cat, i) => (
             <span
               key={i}
-              className="bg-gray-800 border border-gray-700 rounded-lg px-3 py-1.5 text-xs font-medium text-gray-300"
+              className="bg-gray-800/80 border border-gray-700/50 rounded-xl px-3 py-1.5 text-xs font-medium text-gray-300"
             >
               {cat}
             </span>
@@ -100,9 +100,9 @@ export default function BlogPage() {
           {SAMPLE_POSTS.map((post) => (
             <article
               key={post.slug}
-              className="bg-gray-900 border border-gray-700 rounded-xl overflow-hidden hover:border-gray-600 transition-colors group"
+              className="bg-linear-to-br from-gray-900 to-gray-900/80 border border-gray-800/60 rounded-2xl overflow-hidden hover:border-gray-700/80 hover:shadow-xl hover:shadow-brand-glow/5 transition-all duration-300 group"
             >
-              <div className="aspect-video bg-gray-800"></div>
+              <div className="aspect-video bg-linear-to-br from-gray-800/80 to-gray-800/50"></div>
               <div className="p-6">
                 <div className="flex items-center gap-3 mb-3">
                   <span className="bg-brand/10 text-brand text-xs font-medium px-2 py-1 rounded">
@@ -126,16 +126,16 @@ export default function BlogPage() {
       </Section>
 
       {/* Newsletter */}
-      <Section className="bg-gray-900/50">
+      <Section className="bg-gray-900/30">
         <div className="text-center max-w-xl mx-auto">
           <p className="text-gray-300 mb-6">{t("comingSoon")}</p>
           <div className="flex gap-3">
             <input
               type="email"
               placeholder={t("emailPlaceholder")}
-              className="flex-1 bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white placeholder:text-gray-500 outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 transition-colors"
+              className="flex-1 bg-gray-900/80 border border-gray-700/50 rounded-xl px-5 py-3.5 text-white placeholder:text-gray-400 outline-none focus:border-brand focus:ring-4 focus:ring-brand/10 transition-all duration-200"
             />
-            <button className="bg-brand hover:bg-brand-hover text-white px-6 py-3 rounded-lg font-semibold transition-all shrink-0">
+            <button className="bg-linear-to-r from-brand to-brand-light hover:from-brand-hover hover:to-brand text-white px-6 py-3.5 rounded-xl font-semibold shadow-lg shadow-brand-glow active:scale-[0.97] transition-all duration-200 shrink-0">
               {t("subscribe")}
             </button>
           </div>

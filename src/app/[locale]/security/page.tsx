@@ -58,13 +58,13 @@ export default function SecurityPage() {
   return (
     <>
       <Section className="pt-16 md:pt-24">
-        <h1 className="text-hero text-white mb-6">{t("h1")}</h1>
+        <h1 className="text-hero bg-linear-to-br from-white via-gray-100 to-gray-300 bg-clip-text text-transparent mb-8">{t("h1")}</h1>
       </Section>
 
       {sections.map(({ icon: Icon, h2, items }, i) => (
-        <Section key={i} className={i % 2 === 1 ? "bg-gray-900/50" : ""}>
+        <Section key={i} className={i % 2 === 1 ? "bg-gray-900/30" : ""}>
           <div className="flex items-center gap-4 mb-6">
-            <div className="w-12 h-12 bg-brand/10 rounded-lg flex items-center justify-center">
+            <div className="w-12 h-12 bg-brand/10 rounded-xl flex items-center justify-center">
               <Icon className="w-6 h-6 text-brand" />
             </div>
             <h2 className="text-h2 text-white">{h2}</h2>
@@ -82,8 +82,8 @@ export default function SecurityPage() {
 
       <Section className="text-center">
         <Link
-          href="/pricing"
-          className="bg-brand hover:bg-brand-hover text-white px-8 py-4 rounded-lg font-semibold transition-all inline-block"
+          href="/contact"
+          className="bg-linear-to-r from-brand to-brand-light hover:from-brand-hover hover:to-brand text-white px-8 py-4 rounded-xl font-semibold shadow-lg shadow-brand-glow hover:shadow-xl active:scale-[0.97] transition-all duration-200 inline-block"
         >
           {t("cta")}
         </Link>

@@ -15,7 +15,7 @@ export default async function BlogPostPage({
       <Section className="pt-16 md:pt-24">
         <Link
           href="/blog"
-          className="text-brand hover:text-brand-light text-sm font-medium inline-flex items-center gap-2 mb-8"
+          className="text-brand-light hover:text-white text-sm font-medium inline-flex items-center gap-2 mb-8 transition-colors duration-200"
         >
           <ArrowLeft className="w-4 h-4" /> Back to Blog
         </Link>
@@ -31,7 +31,7 @@ export default async function BlogPostPage({
               <Calendar className="w-3 h-3" /> Feb 28, 2026
             </span>
           </div>
-          <h1 className="text-hero text-white mb-6">
+          <h1 className="text-hero bg-linear-to-br from-white via-gray-100 to-gray-300 bg-clip-text text-transparent mb-8">
             {slug
               .split("-")
               .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
@@ -44,7 +44,7 @@ export default async function BlogPostPage({
               optimization, AI in advertising, and marketing agency growth
               strategies.
             </p>
-            <div className="bg-gray-900 border border-gray-700 rounded-xl p-8 text-center">
+            <div className="bg-linear-to-br from-gray-900 to-gray-900/80 border border-gray-800/60 rounded-2xl p-8 hover:border-gray-700/80 hover:shadow-lg hover:shadow-brand-glow/5 transition-all duration-300 text-center">
               <p className="text-gray-400">
                 Full article content coming soon.
               </p>

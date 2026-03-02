@@ -39,7 +39,7 @@ export default function AboutPage() {
   return (
     <>
       <Section className="pt-16 md:pt-24">
-        <h1 className="text-hero text-white mb-6">{t("h1")}</h1>
+        <h1 className="text-hero bg-linear-to-br from-white via-gray-100 to-gray-300 bg-clip-text text-transparent mb-8">{t("h1")}</h1>
       </Section>
 
       {/* Problem */}
@@ -51,13 +51,13 @@ export default function AboutPage() {
       </Section>
 
       {/* Approach */}
-      <Section className="bg-gray-900/50">
+      <Section className="bg-gray-900/30">
         <h2 className="text-h2 text-white mb-10">{t("approachH2")}</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {approaches.map((a, i) => (
             <div
               key={i}
-              className="bg-gray-900 border border-gray-700 rounded-xl p-6"
+              className="bg-linear-to-br from-gray-900 to-gray-900/80 border border-gray-800/60 rounded-2xl p-6 hover:border-gray-700/80 hover:shadow-lg hover:shadow-brand-glow/5 transition-all duration-300"
             >
               <h3 className="text-h4 text-white mb-2">{a.title}</h3>
               <p className="text-gray-400">{a.desc}</p>
@@ -74,9 +74,9 @@ export default function AboutPage() {
           {[1, 2, 3].map((i) => (
             <div
               key={i}
-              className="bg-gray-900 border border-gray-700 rounded-xl p-6 text-center"
+              className="bg-linear-to-br from-gray-900 to-gray-900/80 border border-gray-800/60 rounded-2xl p-6 text-center hover:border-gray-700/80 hover:shadow-lg hover:shadow-brand-glow/5 transition-all duration-300"
             >
-              <div className="w-20 h-20 rounded-full bg-gray-800 mx-auto mb-4"></div>
+              <div className="w-20 h-20 rounded-full bg-linear-to-br from-gray-700 to-gray-800 mx-auto mb-4"></div>
               <h3 className="text-white font-semibold">Team Member {i}</h3>
               <p className="text-gray-400 text-sm">Role</p>
             </div>
@@ -85,12 +85,12 @@ export default function AboutPage() {
       </Section>
 
       {/* Values */}
-      <Section className="bg-gray-900/50">
+      <Section className="bg-gray-900/30">
         <h2 className="text-h2 text-white mb-10">{t("valuesH2")}</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {values.map((v, i) => (
             <div key={i}>
-              <div className="w-10 h-10 rounded-full bg-brand/10 border border-brand flex items-center justify-center mb-4">
+              <div className="w-10 h-10 rounded-xl bg-brand/10 border border-brand/30 flex items-center justify-center mb-4">
                 <span className="text-brand font-bold">{i + 1}</span>
               </div>
               <h3 className="text-h4 text-white mb-2">{v.title}</h3>
@@ -102,8 +102,8 @@ export default function AboutPage() {
 
       <Section className="text-center">
         <Link
-          href="/pricing"
-          className="bg-brand hover:bg-brand-hover text-white px-8 py-4 rounded-lg font-semibold transition-all inline-block"
+          href="/contact"
+          className="bg-linear-to-r from-brand to-brand-light hover:from-brand-hover hover:to-brand text-white px-8 py-4 rounded-xl font-semibold shadow-lg shadow-brand-glow hover:shadow-xl active:scale-[0.97] transition-all duration-200 inline-block"
         >
           {t("cta")}
         </Link>

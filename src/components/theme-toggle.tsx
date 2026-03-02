@@ -10,12 +10,12 @@ export function ThemeToggle() {
 
   useEffect(() => setMounted(true), []);
 
-  if (!mounted) return <div className="w-9 h-9" />;
+  if (!mounted) return <div className="w-10 h-10" />;
 
   return (
     <button
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="p-2 rounded-lg text-gray-400 hover:text-white dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+      className="p-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-gray-800 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950"
       aria-label="Toggle theme"
     >
       {theme === "dark" ? (

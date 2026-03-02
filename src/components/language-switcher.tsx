@@ -14,13 +14,13 @@ export function LanguageSwitcher() {
   };
 
   return (
-    <div className="flex items-center gap-1">
+    <div className="flex items-center gap-1 text-sm">
       <button
         onClick={() => switchLocale("pl")}
-        className={`text-sm px-2 py-1 rounded transition-colors ${
+        className={`px-2 py-1.5 rounded-lg transition-colors duration-200 ${
           locale === "pl"
-            ? "text-white font-semibold"
-            : "text-gray-400 hover:text-white"
+            ? "text-white font-semibold bg-gray-800/50"
+            : "text-gray-400 hover:text-white hover:bg-gray-800/30"
         }`}
         aria-label="Polski"
       >
@@ -29,10 +29,10 @@ export function LanguageSwitcher() {
       <span className="text-gray-600">/</span>
       <button
         onClick={() => switchLocale("en")}
-        className={`text-sm px-2 py-1 rounded transition-colors ${
+        className={`px-2 py-1.5 rounded-lg transition-colors duration-200 ${
           locale === "en"
-            ? "text-white dark:text-white font-semibold"
-            : "text-gray-400 hover:text-white"
+            ? "text-white font-semibold bg-gray-800/50"
+            : "text-gray-400 hover:text-white hover:bg-gray-800/30"
         }`}
         aria-label="English"
       >

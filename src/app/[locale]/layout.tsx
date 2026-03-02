@@ -43,10 +43,10 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale}
-      className={`${inter.variable} ${jetbrainsMono.variable} dark`}
+      className={`${inter.variable} ${jetbrainsMono.variable}`}
       suppressHydrationWarning
     >
-      <body className="bg-gray-950 dark:bg-gray-950 text-gray-100 dark:text-gray-100 font-sans antialiased min-h-screen flex flex-col">
+      <body className="bg-gray-950 text-gray-100 font-sans antialiased min-h-screen flex flex-col">
         <ThemeProvider>
           <NextIntlClientProvider messages={messages}>
             <Header />

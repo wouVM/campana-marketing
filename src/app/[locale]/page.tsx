@@ -62,38 +62,38 @@ export default function HomePage({
       {/* Hero */}
       <Section className="pt-16 md:pt-24 lg:pt-32">
         <div className="max-w-4xl">
-          <h1 className="text-hero text-white mb-6 leading-tight">
+          <h1 className="text-hero bg-linear-to-br from-white via-gray-100 to-gray-300 bg-clip-text text-transparent mb-8 leading-tight">
             {t("hero.h1")}
           </h1>
-          <p className="text-body-lg text-gray-300 mb-8 max-w-2xl">
+          <p className="text-body-lg text-gray-300/90 mb-10 max-w-2xl">
             {t("hero.sub")}
           </p>
-          <ul className="space-y-3 mb-10">
+          <ul className="space-y-4 mb-12">
             {["bullet1", "bullet2", "bullet3"].map((key) => (
               <li
                 key={key}
-                className="flex items-start gap-3 text-gray-300"
+                className="flex items-start gap-4 text-gray-200"
               >
                 <Check className="w-5 h-5 text-accent shrink-0 mt-0.5" />
                 <span>{t(`hero.${key}`)}</span>
               </li>
             ))}
           </ul>
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-col sm:flex-row gap-5">
             <Link
-              href="/pricing"
-              className="bg-brand hover:bg-brand-hover text-white px-8 py-4 rounded-lg font-semibold transition-all duration-150 shadow-sm hover:shadow-md active:scale-[0.98] text-center"
+              href="/contact"
+              className="bg-linear-to-r from-brand to-brand-light hover:from-brand-hover hover:to-brand text-white px-8 py-4 rounded-xl font-semibold shadow-lg shadow-brand-glow hover:shadow-xl active:scale-[0.97] transition-all duration-200 text-center"
             >
               {t("hero.cta")}
             </Link>
             <Link
               href="/how-it-works"
-              className="bg-gray-800 hover:bg-gray-700 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-150 text-center"
+              className="bg-gray-800/80 hover:bg-gray-700/80 backdrop-blur-sm text-white px-8 py-4 rounded-xl font-semibold border border-gray-700/50 hover:border-gray-600/50 active:scale-[0.97] transition-all duration-200 text-center"
             >
               {t("hero.ctaSecondary")}
             </Link>
           </div>
-          <p className="text-gray-500 text-sm mt-4">{t("hero.noCreditCard")}</p>
+          <p className="text-gray-400 text-sm mt-4">{t("hero.noCreditCard")}</p>
         </div>
       </Section>
 
@@ -104,25 +104,25 @@ export default function HomePage({
           {t("pain.copy")}
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-          <div className="bg-red-950/30 border border-red-900/50 rounded-xl p-8">
+          <div className="bg-red-950/20 border border-red-900/30 rounded-2xl p-8">
             <h3 className="text-h4 text-red-400 mb-3">{t("pain.without")}</h3>
             <p className="text-gray-400">{t("pain.withoutDesc")}</p>
           </div>
-          <div className="bg-green-950/30 border border-green-900/50 rounded-xl p-8">
-            <h3 className="text-h4 text-green-400 mb-3">{t("pain.with")}</h3>
+          <div className="bg-emerald-950/20 border border-emerald-900/30 rounded-2xl p-8">
+            <h3 className="text-h4 text-emerald-400 mb-3">{t("pain.with")}</h3>
             <p className="text-gray-300">{t("pain.withDesc")}</p>
           </div>
         </div>
         <Link
           href="/how-it-works"
-          className="text-brand hover:text-brand-light font-medium transition-colors inline-flex items-center gap-2"
+          className="text-brand-light hover:text-white font-medium transition-colors duration-200 inline-flex items-center gap-2"
         >
           {t("pain.link")} <ArrowRight className="w-4 h-4" />
         </Link>
       </Section>
 
       {/* Proof Strip */}
-      <Section className="bg-gray-900/50">
+      <Section className="bg-gray-900/30">
         <h2 className="text-h2 text-white mb-10 text-center">
           {t("proof.h2")}
         </h2>
@@ -131,7 +131,7 @@ export default function HomePage({
             (key) => (
               <div
                 key={key}
-                className="bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-sm font-medium text-gray-300 flex items-center gap-2"
+                className="bg-gray-800/80 border border-gray-700/50 rounded-xl px-4 py-2.5 text-sm font-medium text-gray-300 flex items-center gap-2"
               >
                 <Shield className="w-4 h-4 text-accent" />
                 {t(`proof.${key}`)}
@@ -145,13 +145,13 @@ export default function HomePage({
         <div className="flex flex-col sm:flex-row justify-center gap-6">
           <Link
             href="/for-agencies"
-            className="text-brand hover:text-brand-light font-medium text-sm transition-colors"
+            className="text-brand-light hover:text-white font-medium text-sm transition-colors duration-200"
           >
             {t("proof.agencyLink")}
           </Link>
           <Link
             href="/for-businesses"
-            className="text-brand hover:text-brand-light font-medium text-sm transition-colors"
+            className="text-brand-light hover:text-white font-medium text-sm transition-colors duration-200"
           >
             {t("proof.smeLink")}
           </Link>
@@ -171,7 +171,7 @@ export default function HomePage({
             { icon: Bot, key: "step4" },
           ].map(({ icon: Icon, key }, i) => (
             <div key={key} className="text-center">
-              <div className="w-14 h-14 rounded-full bg-brand/10 border border-brand flex items-center justify-center mx-auto mb-4">
+              <div className="w-14 h-14 rounded-2xl bg-brand/10 border border-brand/30 flex items-center justify-center mx-auto mb-4">
                 <Icon className="w-6 h-6 text-brand" />
               </div>
               <span className="text-xs text-gray-500 font-mono">
@@ -180,7 +180,7 @@ export default function HomePage({
               <h3 className="text-h4 text-white mt-1 mb-2">
                 {t(`howItWorks.${key}`)}
               </h3>
-              <p className="text-gray-400 text-sm">
+              <p className="text-gray-400">
                 {t(`howItWorks.${key}Desc`)}
               </p>
             </div>
@@ -189,13 +189,13 @@ export default function HomePage({
         <div className="flex flex-col sm:flex-row justify-center gap-6">
           <Link
             href="/how-it-works"
-            className="text-brand hover:text-brand-light font-medium text-sm transition-colors"
+            className="text-brand-light hover:text-white font-medium text-sm transition-colors duration-200"
           >
             {t("howItWorks.link1")}
           </Link>
           <Link
             href="/technology"
-            className="text-brand hover:text-brand-light font-medium text-sm transition-colors"
+            className="text-brand-light hover:text-white font-medium text-sm transition-colors duration-200"
           >
             {t("howItWorks.link2")}
           </Link>

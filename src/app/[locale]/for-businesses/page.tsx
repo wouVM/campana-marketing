@@ -39,32 +39,32 @@ export default function ForBusinessesPage() {
   return (
     <>
       <Section className="pt-16 md:pt-24">
-        <h1 className="text-hero text-white mb-6">{t("h1")}</h1>
+        <h1 className="text-hero bg-linear-to-br from-white via-gray-100 to-gray-300 bg-clip-text text-transparent mb-8">{t("h1")}</h1>
       </Section>
 
       {/* Kasia's Scenario */}
       <Section>
         <h2 className="text-h2 text-white mb-8">{t("kasiaH2")}</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-red-950/20 border border-red-900/30 rounded-xl p-8">
+          <div className="bg-red-950/20 border border-red-900/30 rounded-2xl p-8">
             <p className="text-xs text-red-400 font-semibold uppercase tracking-wider mb-3">The Problem</p>
             <p className="text-gray-300">{t("kasiaBefore")}</p>
           </div>
-          <div className="bg-green-950/20 border border-green-900/30 rounded-xl p-8">
-            <p className="text-xs text-green-400 font-semibold uppercase tracking-wider mb-3">With Campana</p>
+          <div className="bg-emerald-950/20 border border-emerald-900/30 rounded-2xl p-8">
+            <p className="text-xs text-emerald-400 font-semibold uppercase tracking-wider mb-3">With Campana</p>
             <p className="text-gray-300">{t("kasiaAfter")}</p>
           </div>
         </div>
       </Section>
 
       {/* Benefits */}
-      <Section className="bg-gray-900/50">
+      <Section className="bg-gray-900/30">
         <h2 className="text-h2 text-white mb-10">{t("benefitsH2")}</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {benefits.map((b, i) => (
             <div
               key={i}
-              className="bg-gray-900 border border-gray-700 rounded-xl p-6 hover:border-gray-600 transition-colors"
+              className="bg-linear-to-br from-gray-900 to-gray-900/80 border border-gray-800/60 rounded-2xl p-6 hover:border-gray-700/80 hover:shadow-lg hover:shadow-brand-glow/5 transition-all duration-300"
             >
               <h3 className="text-h4 text-white mb-2">{b.title}</h3>
               <p className="text-gray-400">{b.desc}</p>
@@ -80,7 +80,7 @@ export default function ForBusinessesPage() {
           {protectionItems.map((item, i) => (
             <div
               key={i}
-              className="flex items-start gap-4 bg-gray-900 border border-gray-700 rounded-lg p-5"
+              className="flex items-start gap-4 bg-linear-to-br from-gray-900 to-gray-900/80 border border-gray-800/60 rounded-xl p-5"
             >
               <Shield className="w-5 h-5 text-accent shrink-0 mt-0.5" />
               <span className="text-gray-300">{item}</span>
@@ -89,8 +89,8 @@ export default function ForBusinessesPage() {
         </div>
         <div className="mt-10">
           <Link
-            href="/pricing"
-            className="bg-brand hover:bg-brand-hover text-white px-8 py-4 rounded-lg font-semibold transition-all inline-block"
+            href="/contact"
+            className="bg-linear-to-r from-brand to-brand-light hover:from-brand-hover hover:to-brand text-white px-8 py-4 rounded-xl font-semibold shadow-lg shadow-brand-glow hover:shadow-xl active:scale-[0.97] transition-all duration-200 inline-block"
           >
             {t("cta")}
           </Link>

@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
+import { useRouter } from "@/i18n/navigation";
 import { Link } from "@/i18n/navigation";
 import { Section } from "@/components/section";
 import { CtaBlock } from "@/components/cta-block";
@@ -22,7 +23,7 @@ function RoiCalculator() {
   const netRoi = Math.round(cpaSavings + copySaved - campanaCost);
 
   return (
-    <div className="bg-gray-900 border border-gray-700 rounded-2xl p-8">
+    <div className="bg-linear-to-br from-gray-900 to-gray-900/80 border border-gray-800/60 rounded-2xl p-8 hover:border-gray-700/80 hover:shadow-lg hover:shadow-brand-glow/5 transition-all duration-300">
       <h2 className="text-h2 text-white mb-8">{t("roiH2")}</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="space-y-6">
@@ -36,7 +37,7 @@ function RoiCalculator() {
               max="100"
               value={accounts}
               onChange={(e) => setAccounts(Number(e.target.value))}
-              className="w-full accent-brand"
+              className="w-full h-2 appearance-none rounded-full bg-gray-700 cursor-pointer accent-brand [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-brand [&::-webkit-slider-thumb]:shadow-lg [&::-webkit-slider-thumb]:shadow-brand-glow [&::-webkit-slider-thumb]:cursor-pointer"
             />
           </div>
           <div>
@@ -50,7 +51,7 @@ function RoiCalculator() {
               step="1000"
               value={spend}
               onChange={(e) => setSpend(Number(e.target.value))}
-              className="w-full accent-brand"
+              className="w-full h-2 appearance-none rounded-full bg-gray-700 cursor-pointer accent-brand [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-brand [&::-webkit-slider-thumb]:shadow-lg [&::-webkit-slider-thumb]:shadow-brand-glow [&::-webkit-slider-thumb]:cursor-pointer"
             />
           </div>
           <div>
@@ -63,7 +64,7 @@ function RoiCalculator() {
               max="200"
               value={cpa}
               onChange={(e) => setCpa(Number(e.target.value))}
-              className="w-full accent-brand"
+              className="w-full h-2 appearance-none rounded-full bg-gray-700 cursor-pointer accent-brand [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-brand [&::-webkit-slider-thumb]:shadow-lg [&::-webkit-slider-thumb]:shadow-brand-glow [&::-webkit-slider-thumb]:cursor-pointer"
             />
           </div>
           <div>
@@ -76,36 +77,36 @@ function RoiCalculator() {
               max="40"
               value={hours}
               onChange={(e) => setHours(Number(e.target.value))}
-              className="w-full accent-brand"
+              className="w-full h-2 appearance-none rounded-full bg-gray-700 cursor-pointer accent-brand [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-brand [&::-webkit-slider-thumb]:shadow-lg [&::-webkit-slider-thumb]:shadow-brand-glow [&::-webkit-slider-thumb]:cursor-pointer"
             />
           </div>
         </div>
         <div className="space-y-4">
-          <div className="bg-gray-800 rounded-lg p-4">
+          <div className="bg-gray-800/60 rounded-xl p-5">
             <p className="text-gray-400 text-sm">{t("roiSavings")}</p>
             <p className="text-2xl font-bold text-green-400">
               {Math.round(cpaSavings).toLocaleString()} PLN
             </p>
           </div>
-          <div className="bg-gray-800 rounded-lg p-4">
+          <div className="bg-gray-800/60 rounded-xl p-5">
             <p className="text-gray-400 text-sm">{t("roiTime")}</p>
             <p className="text-2xl font-bold text-accent">
               {timeSaved} {t("roiHoursLabel")}
             </p>
           </div>
-          <div className="bg-gray-800 rounded-lg p-4">
+          <div className="bg-gray-800/60 rounded-xl p-5">
             <p className="text-gray-400 text-sm">{t("roiCopySaved")}</p>
             <p className="text-2xl font-bold text-blue-400">
               ~{copySaved.toLocaleString()} PLN
             </p>
           </div>
-          <div className="bg-gray-800 rounded-lg p-4">
+          <div className="bg-gray-800/60 rounded-xl p-5">
             <p className="text-gray-400 text-sm">{t("roiCampanaCost")}</p>
             <p className="text-2xl font-bold text-gray-300">
               {campanaCost.toLocaleString()} PLN
             </p>
           </div>
-          <div className="bg-brand/10 border border-brand/20 rounded-lg p-4">
+          <div className="bg-brand/10 border border-brand/20 rounded-xl p-5">
             <p className="text-brand text-sm">{t("roiNet")}</p>
             <p className="text-3xl font-bold text-white">
               {netRoi >= 0 ? "+" : ""}
@@ -119,6 +120,12 @@ function RoiCalculator() {
 }
 
 export default function PricingPage() {
+  // Pricing hidden — discussing individually with clients. Redirect to contact.
+  const router = useRouter();
+  useEffect(() => {
+    router.replace("/contact");
+  }, [router]);
+
   const t = useTranslations("pricing");
   const features = t.raw("featuresList") as string[];
 
@@ -180,7 +187,7 @@ export default function PricingPage() {
   return (
     <>
       <Section className="pt-16 md:pt-24">
-        <h1 className="text-hero text-white mb-6 text-center">{t("h1")}</h1>
+        <h1 className="text-hero bg-linear-to-br from-white via-gray-100 to-gray-300 bg-clip-text text-transparent mb-8 text-center">{t("h1")}</h1>
         <h2 className="text-h3 text-gray-300 text-center mb-4">
           {t("philH2")}
         </h2>
@@ -194,7 +201,7 @@ export default function PricingPage() {
 
       {/* Founding User Banner */}
       <Section>
-        <div className="bg-linear-to-r from-brand/20 to-accent/20 border border-brand/30 rounded-2xl p-8 text-center">
+        <div className="bg-linear-to-br from-brand/10 to-accent/10 border border-brand/20 shadow-lg shadow-brand-glow/5 rounded-2xl p-8 text-center">
           <div className="flex items-center justify-center gap-2 mb-3">
             <Sparkles className="w-5 h-5 text-accent" />
             <span className="text-accent font-bold text-sm uppercase tracking-wider">
@@ -214,14 +221,14 @@ export default function PricingPage() {
           {tiers.map((tier) => (
             <div
               key={tier.name}
-              className={`bg-gray-900 rounded-2xl p-8 relative ${
+              className={`bg-linear-to-br from-gray-900 to-gray-900/80 rounded-2xl p-8 relative ${
                 tier.popular
-                  ? "border-2 border-brand shadow-xl shadow-brand/20"
-                  : "border-2 border-gray-700"
+                  ? "border-2 border-brand/50 shadow-xl shadow-brand-glow/10"
+                  : "border border-gray-800/60"
               }`}
             >
               {tier.popular && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand text-white px-4 py-1 rounded-full text-xs font-semibold">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-linear-to-r from-brand to-brand-light text-white px-5 py-1.5 rounded-full text-xs font-bold shadow-lg shadow-brand-glow">
                   {t("mostPopular")}
                 </div>
               )}
@@ -291,9 +298,9 @@ export default function PricingPage() {
               </p>
               <Link
                 href="/contact"
-                className={`block w-full text-center py-3 rounded-lg font-semibold transition-all ${
+                className={`block w-full text-center py-3 rounded-xl font-semibold transition-all duration-200 ${
                   tier.popular
-                    ? "bg-brand hover:bg-brand-hover text-white"
+                    ? "bg-linear-to-r from-brand to-brand-light hover:from-brand-hover hover:to-brand text-white shadow-lg shadow-brand-glow hover:shadow-xl active:scale-[0.97]"
                     : "bg-gray-800 hover:bg-gray-700 text-white"
                 }`}
               >
@@ -305,7 +312,7 @@ export default function PricingPage() {
       </Section>
 
       {/* Free Trial */}
-      <Section className="bg-gray-900/50">
+      <Section className="bg-gray-900/30">
         <div className="text-center">
           <h2 className="text-h2 text-white mb-6">{t("trialH2")}</h2>
           <ul className="space-y-3 max-w-md mx-auto mb-6">
@@ -327,7 +334,7 @@ export default function PricingPage() {
           </div>
           <Link
             href="/contact"
-            className="bg-brand hover:bg-brand-hover text-white px-8 py-4 rounded-lg font-semibold transition-all inline-block"
+            className="bg-linear-to-r from-brand to-brand-light hover:from-brand-hover hover:to-brand text-white px-8 py-4 rounded-xl font-semibold shadow-lg shadow-brand-glow hover:shadow-xl active:scale-[0.97] transition-all duration-200 inline-block"
           >
             {t("trialCta")}
           </Link>

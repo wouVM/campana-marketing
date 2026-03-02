@@ -16,10 +16,10 @@ function Accordion({ question, answer }: { question: string; answer: string }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="bg-gray-900 border border-gray-700 rounded-lg hover:border-gray-600 transition-colors">
+    <div className="bg-linear-to-br from-gray-900 to-gray-900/80 border border-gray-800/60 rounded-xl hover:border-gray-700/80 transition-all duration-200">
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between p-6 text-left"
+        className="w-full flex items-center justify-between p-6 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/50 rounded-xl"
         aria-expanded={open}
       >
         <h3 className="text-h4 text-white pr-4">{question}</h3>
@@ -46,7 +46,8 @@ export default function FaqPage() {
   const categories = [
     { key: "general", label: t("general") },
     { key: "howItWorks", label: t("howItWorksCategory") },
-    { key: "pricing", label: t("pricingCategory") },
+    // Pricing category hidden — discussing individually with clients
+    // { key: "pricing", label: t("pricingCategory") },
     { key: "safety", label: t("safetyCategory") },
     { key: "technical", label: t("technicalCategory") },
   ];
@@ -58,20 +59,22 @@ export default function FaqPage() {
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: questions.map((q) => ({
-      "@type": "Question",
-      name: q.q,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: q.a,
-      },
-    })),
+    mainEntity: questions
+      .filter((q) => q.category !== "pricing")
+      .map((q) => ({
+        "@type": "Question",
+        name: q.q,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: q.a,
+        },
+      })),
   };
 
   return (
     <>
       <Section className="pt-16 md:pt-24">
-        <h1 className="text-hero text-white mb-10 text-center">{t("h1")}</h1>
+        <h1 className="text-hero bg-linear-to-br from-white via-gray-100 to-gray-300 bg-clip-text text-transparent mb-10 text-center">{t("h1")}</h1>
         <div className="flex flex-wrap justify-center gap-3 mb-10">
           {categories.map((cat) => (
             <button
@@ -79,8 +82,8 @@ export default function FaqPage() {
               onClick={() => setActiveCategory(cat.key)}
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                 activeCategory === cat.key
-                  ? "bg-brand text-white"
-                  : "bg-gray-800 text-gray-300 hover:bg-gray-700"
+                  ? "bg-brand text-white shadow-lg shadow-brand-glow"
+                  : "bg-gray-800/80 text-gray-300 hover:bg-gray-700/80 border border-gray-700/50"
               }`}
             >
               {cat.label}
