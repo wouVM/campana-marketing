@@ -121,6 +121,32 @@ export default function HomePage({
         </Link>
       </Section>
 
+      {/* Hybrid Edge */}
+      <Section className="bg-gray-900/30">
+        <h2 className="text-h2 text-white mb-4 text-center">{t("hybrid.h2")}</h2>
+        <p className="text-body-lg text-gray-300 max-w-3xl mx-auto text-center mb-10">
+          {t("hybrid.sub")}
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {[
+            { icon: BarChart3, key: "card1" },
+            { icon: Bot, key: "card2" },
+            { icon: Shield, key: "card3" },
+          ].map(({ icon: Icon, key }) => (
+            <div
+              key={key}
+              className="bg-linear-to-br from-gray-900 to-gray-900/80 border border-gray-800/60 rounded-2xl p-6 hover:border-gray-700/80 hover:shadow-lg hover:shadow-brand-glow/5 transition-all duration-300"
+            >
+              <div className="w-10 h-10 rounded-xl bg-brand/10 border border-brand/30 flex items-center justify-center mb-4">
+                <Icon className="w-5 h-5 text-brand" />
+              </div>
+              <h3 className="text-h4 text-white mb-2">{t(`hybrid.${key}Title`)}</h3>
+              <p className="text-gray-400">{t(`hybrid.${key}Desc`)}</p>
+            </div>
+          ))}
+        </div>
+      </Section>
+
       {/* Proof Strip */}
       <Section className="bg-gray-900/30">
         <h2 className="text-h2 text-white mb-10 text-center">
